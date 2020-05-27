@@ -1,0 +1,99 @@
+html {
+    background-color: #E5DADA;
+    overflow: hidden;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+nav {
+    color: #242423;
+    display: flex;
+    width: 90vw;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 3vw;
+    height: 10vh;
+
+    div {
+        display: flex;
+        justify-content: space-around;
+        width: 40%;
+    }
+
+    a {
+        text-decoration: none;
+        color: #242423;
+    }
+}
+
+main {
+    height: 75vh;
+    margin-left: 3%;
+
+    .popular-section {
+        height: 50vh;
+
+        div {
+            display: grid;
+            grid-template-rows: 40vh;
+            grid-template-columns: repeat(3, minmax(300px, 1fr));
+            grid-gap: 5vw;
+
+            div {
+                height: 100%;
+                width: 100%;
+                border-radius: 19px;
+                box-shadow: 0px 0px 18px gray;
+                padding: 5%;
+            }
+        }
+    }
+
+    .recently-section {
+        div {
+            display: grid;
+            grid-template-rows: 15vh;
+            grid-template-columns: repeat(3, minmax(300px, 1fr));
+            grid-gap: 5vw;
+
+            div {
+                background-color: #f3f3f3;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
+
+footer {
+    height: 15vh;
+    width: 100%;
+    background-color: #002642;
+    margin-left: -10%;
+    padding-left: 11%;
+    display: grid;
+    grid-template-columns: 1fr 9fr 4fr;
+
+    .album-cover {
+        background-color: #E5DADA;
+        margin: 10px 20px;
+        margin-bottom: 20px;
+    }
+
+    .song-data {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 30vw;
+        color: #E5DADA;
+    }
+
+    .player {
+        background-color: #E5DADA;
+        margin: 20px;
+    }
+}

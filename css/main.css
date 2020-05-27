@@ -1,0 +1,121 @@
+html {
+  background-color: #E5DADA;
+  overflow: hidden;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+nav {
+  color: #242423;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90vw;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  padding: 0 3vw;
+  height: 10vh;
+}
+
+nav div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 40%;
+}
+
+nav a {
+  text-decoration: none;
+  color: #242423;
+}
+
+main {
+  height: 75vh;
+  margin-left: 3%;
+}
+
+main .popular-section {
+  height: 50vh;
+}
+
+main .popular-section div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 40vh;
+      grid-template-rows: 40vh;
+  -ms-grid-columns: (minmax(300px, 1fr))[3];
+      grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-gap: 5vw;
+}
+
+main .popular-section div div {
+  height: 100%;
+  width: 100%;
+  border-radius: 19px;
+  -webkit-box-shadow: 0px 0px 18px gray;
+          box-shadow: 0px 0px 18px gray;
+  padding: 5%;
+}
+
+main .recently-section div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 15vh;
+      grid-template-rows: 15vh;
+  -ms-grid-columns: (minmax(300px, 1fr))[3];
+      grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-gap: 5vw;
+}
+
+main .recently-section div div {
+  background-color: #f3f3f3;
+  height: 100%;
+  width: 100%;
+}
+
+footer {
+  height: 15vh;
+  width: 100%;
+  background-color: #002642;
+  margin-left: -10%;
+  padding-left: 11%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 9fr 4fr;
+      grid-template-columns: 1fr 9fr 4fr;
+}
+
+footer .album-cover {
+  background-color: #E5DADA;
+  margin: 10px 20px;
+  margin-bottom: 20px;
+}
+
+footer .song-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30vw;
+  color: #E5DADA;
+}
+
+footer .player {
+  background-color: #E5DADA;
+  margin: 20px;
+}
+/*# sourceMappingURL=main.css.map */
