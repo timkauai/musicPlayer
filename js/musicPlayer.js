@@ -1,3 +1,7 @@
+import {
+    setUpSongData as sd
+} from './songData.js'
+
 let songDuration;
 let isPlaying = false;
 
@@ -6,6 +10,7 @@ export function prev(songData) {
         songData.songNum--;
         songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
         songData.song.play();
+        sd(songData.songNum);
     } else {}
 }
 
@@ -34,6 +39,7 @@ export function next(songData) {
         songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
     }
     songData.song.play();
+    sd(songData.songNum);
 }
 
 export function doesFileExist(urlToFile) {

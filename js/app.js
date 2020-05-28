@@ -5,7 +5,7 @@ import {
 } from './musicPlayer.js';
 
 import {
-    SongData as sd
+    setUpSongData as sd
 } from './songData.js';
 
 let Song = new Audio();
@@ -16,6 +16,7 @@ let songData = {
     songNum: 0,
 };
 
+sd(songData.songNum);
 
 //the stuff
 let player = document.querySelector('.player');
@@ -34,5 +35,3 @@ nextBtn.addEventListener("click", (function () {
 }));
 
 playBtn.className = "play";
-
-console.log(sd)
