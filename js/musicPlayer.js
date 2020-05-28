@@ -9,7 +9,9 @@ export function prev(songData) {
     if (songData.songNum != 0) {
         songData.songNum--;
         songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
-        songData.song.play();
+        if (isPlaying) {
+            songData.song.play();
+        }
         sd(songData.songNum);
     } else {}
 }
@@ -38,7 +40,10 @@ export function next(songData) {
         songData.songNum = 0;
         songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
     }
-    songData.song.play();
+
+    if (isPlaying) {
+        songData.song.play();
+    }
     sd(songData.songNum);
 }
 
