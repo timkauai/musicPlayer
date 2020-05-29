@@ -1,6 +1,9 @@
 import {
     setUpSongData as sd
 } from './songData.js'
+import {
+    queue
+} from './queue.js'
 
 let songDuration;
 let isPlaying = false;
@@ -22,7 +25,14 @@ export function play(songData, playBtn) {
             songData.song.duration = songDuration
         }
 
-        songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
+        if (queue.length == 0) {
+            songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
+            sd(songData.songNum);
+        } else {
+            console.log('here');
+            songData.song.src = '../music/' + String(queue.order[queue.current]) + '.mp3'
+            sd(queue.order[queue.current]);
+        }
         songData.song.play();
         isPlaying = true;
         playBtn.className = "pause";

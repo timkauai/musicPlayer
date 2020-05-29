@@ -38,5 +38,32 @@ export let SongData = {
         name: 'Grey',
         artist: 'Saba',
         album: 'Care For Me'
+    },
+    2: {
+        media: {
+            song: '2.mp3',
+            albumCover: 'revenge.png'
+        },
+        name: 'Sacrifices',
+        artist: 'Various',
+        album: 'Revenge'
+    },
+    3: {
+        media: {
+            song: '3.mp3',
+            albumCover: 'revenge.png'
+        },
+        name: '1993',
+        artist: 'Various',
+        album: 'Revenge'
+    },
+    4: {
+        media: {
+            song: '4.mp3',
+            albumCover: 'blkswn.png'
+        },
+        name: 'Wild Irish Roses',
+        artist: 'Smino',
+        album: 'Blkswn'
     }
 }

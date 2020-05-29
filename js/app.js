@@ -8,6 +8,10 @@ import {
     setUpSongData as sd
 } from './songData.js';
 
+import {
+    queue
+} from './queue.js'
+
 let Song = new Audio();
 
 //set up the song number in the queue
@@ -16,7 +20,13 @@ let songData = {
     songNum: 0,
 };
 
-sd(songData.songNum);
+if (queue.length != 0) {
+    sd(queue.order[queue.current]);
+} else {
+    sd(songData.songNum);
+}
+
+
 
 //the stuff
 let player = document.querySelector('.player');

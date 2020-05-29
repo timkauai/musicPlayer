@@ -53,8 +53,8 @@ main .popular-section div {
   display: grid;
   -ms-grid-rows: 40vh;
       grid-template-rows: 40vh;
-  -ms-grid-columns: (minmax(300px, 1fr))[3];
-      grid-template-columns: repeat(3, minmax(300px, 1fr));
+  -ms-grid-columns: (27.5%)[3];
+      grid-template-columns: repeat(3, 27.5%);
   grid-gap: 5vw;
 }
 
@@ -72,8 +72,8 @@ main .recently-section div {
   display: grid;
   -ms-grid-rows: 15vh;
       grid-template-rows: 15vh;
-  -ms-grid-columns: (minmax(300px, 1fr))[3];
-      grid-template-columns: repeat(3, minmax(300px, 1fr));
+  -ms-grid-columns: (27.5%)[3];
+      grid-template-columns: repeat(3, 27.5%);
   grid-gap: 5vw;
 }
 

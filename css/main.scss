@@ -40,7 +40,7 @@ main {
         div {
             display: grid;
             grid-template-rows: 40vh;
-            grid-template-columns: repeat(3, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 27.5%);
             grid-gap: 5vw;
 
             div {
@@ -57,7 +57,7 @@ main {
         div {
             display: grid;
             grid-template-rows: 15vh;
-            grid-template-columns: repeat(3, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 27.5%);
             grid-gap: 5vw;
 
             div {
