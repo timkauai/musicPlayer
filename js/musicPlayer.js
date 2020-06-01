@@ -9,14 +9,37 @@ let songDuration;
 let isPlaying = false;
 
 export function prev(songData) {
-    if (songData.songNum != 0) {
+
+    let songRef = 0;
+
+    if (queue.length == 0) {
         songData.songNum--;
         songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
-        if (isPlaying) {
-            songData.song.play();
+        songRef = songData.songNum
+    } else {
+        queue.current--;
+        if (queue.order[queue.current] == ',' || queue.order[queue.current] == ' ') {
+            queue.current--;
         }
-        sd(songData.songNum);
-    } else {}
+        songData.song.src = '../music/' + String(queue.order[queue.current]) + '.mp3'
+        songRef = queue.order[queue.current]
+
+        console.log(songData.song.src)
+        console.log(queue)
+    }
+
+    if (!doesFileExist(songData.song.src)) {
+        songRef = 0;
+        queue.current = 0
+        songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
+        console.log('file doesnt exist')
+    }
+
+    sd(songRef)
+
+    if (isPlaying) {
+        songData.song.play();
+    }
 }
 
 export function play(songData, playBtn) {
@@ -29,7 +52,7 @@ export function play(songData, playBtn) {
             songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
             sd(songData.songNum);
         } else {
-            console.log('here');
+            console.log('in sond data here')
             songData.song.src = '../music/' + String(queue.order[queue.current]) + '.mp3'
             sd(queue.order[queue.current]);
         }
@@ -44,17 +67,37 @@ export function play(songData, playBtn) {
 }
 
 export function next(songData) {
-    songData.songNum++;
-    songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
-    if (!doesFileExist(songData.song.src)) {
-        songData.songNum = 0;
+
+    let songRef = 0;
+
+    if (queue.length == 0) {
+        songData.songNum++;
         songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
+        songRef = songData.songNum
+    } else {
+        queue.current++;
+        if (queue.order[queue.current] == ',' || queue.order[queue.current] == ' ') {
+            queue.current++;
+        }
+        songData.song.src = '../music/' + String(queue.order[queue.current]) + '.mp3'
+        songRef = queue.order[queue.current]
+
+        console.log(songData.song.src)
+        console.log(queue)
     }
+
+    if (!doesFileExist(songData.song.src)) {
+        songRef = 0;
+        queue.current = 0
+        songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
+        console.log('file doesnt exist')
+    }
+
+    sd(songRef)
 
     if (isPlaying) {
         songData.song.play();
     }
-    sd(songData.songNum);
 }
 
 export function doesFileExist(urlToFile) {
