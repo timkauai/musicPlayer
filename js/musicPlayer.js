@@ -1,41 +1,44 @@
 import {
     setUpSongData as sd
-} from './songData.js'
+} from "./songData.js";
 import {
     queue
-} from './queue.js'
+} from "./queue.js";
 
-let songDuration;
+let songDuration = 0;
 let isPlaying = false;
 
 export function prev(songData) {
-
     let songRef = 0;
 
     if (queue.length == 0) {
         songData.songNum--;
-        songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
-        songRef = songData.songNum
+        songData.song.src = "../music/" + String(songData.songNum) + ".mp3";
+        songRef = songData.songNum;
     } else {
         queue.current--;
-        if (queue.order[queue.current] == ',' || queue.order[queue.current] == ' ') {
+        if (
+            queue.order[queue.current] == "," ||
+            queue.order[queue.current] == " "
+        ) {
             queue.current--;
         }
-        songData.song.src = '../music/' + String(queue.order[queue.current]) + '.mp3'
-        songRef = queue.order[queue.current]
+        songData.song.src =
+            "../music/" + String(queue.order[queue.current]) + ".mp3";
+        songRef = queue.order[queue.current];
 
-        console.log(songData.song.src)
-        console.log(queue)
+        console.log(songData.song.src);
+        console.log(queue);
     }
 
     if (!doesFileExist(songData.song.src)) {
         songRef = 0;
-        queue.current = 0
-        songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
-        console.log('file doesnt exist')
+        queue.current = 0;
+        songData.song.src = "../music/" + String(songData.songNum) + ".mp3";
+        console.log("file doesnt exist");
     }
 
-    sd(songRef)
+    sd(songRef);
 
     if (isPlaying) {
         songData.song.play();
@@ -44,18 +47,15 @@ export function prev(songData) {
 
 export function play(songData, playBtn) {
     if (!isPlaying) {
-        if (songDuration != null) {
-            songData.song.duration = songDuration
-        }
-
         if (queue.length == 0) {
-            songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
+            songData.song.src = "../music/" + String(songData.songNum) + ".mp3";
             sd(songData.songNum);
         } else {
-            console.log('in sond data here')
-            songData.song.src = '../music/' + String(queue.order[queue.current]) + '.mp3'
+            songData.song.src =
+                "../music/" + String(queue.order[queue.current]) + ".mp3";
             sd(queue.order[queue.current]);
         }
+        songData.song.currentTime = songDuration;
         songData.song.play();
         isPlaying = true;
         playBtn.className = "pause";
@@ -63,37 +63,41 @@ export function play(songData, playBtn) {
         isPlaying = false;
         songData.song.pause();
         playBtn.className = "play";
+        songDuration = songData.song.currentTime;
     }
 }
 
 export function next(songData) {
-
     let songRef = 0;
 
     if (queue.length == 0) {
         songData.songNum++;
-        songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
-        songRef = songData.songNum
+        songData.song.src = "../music/" + String(songData.songNum) + ".mp3";
+        songRef = songData.songNum;
     } else {
         queue.current++;
-        if (queue.order[queue.current] == ',' || queue.order[queue.current] == ' ') {
+        if (
+            queue.order[queue.current] == "," ||
+            queue.order[queue.current] == " "
+        ) {
             queue.current++;
         }
-        songData.song.src = '../music/' + String(queue.order[queue.current]) + '.mp3'
-        songRef = queue.order[queue.current]
+        songData.song.src =
+            "../music/" + String(queue.order[queue.current]) + ".mp3";
+        songRef = queue.order[queue.current];
 
-        console.log(songData.song.src)
-        console.log(queue)
+        console.log(songData.song.src);
+        console.log(queue);
     }
 
     if (!doesFileExist(songData.song.src)) {
         songRef = 0;
-        queue.current = 0
-        songData.song.src = '../music/' + String(songData.songNum) + '.mp3';
-        console.log('file doesnt exist')
+        queue.current = 0;
+        songData.song.src = "../music/" + String(songData.songNum) + ".mp3";
+        console.log("file doesnt exist");
     }
 
-    sd(songRef)
+    sd(songRef);
 
     if (isPlaying) {
         songData.song.play();
@@ -102,7 +106,7 @@ export function next(songData) {
 
 export function doesFileExist(urlToFile) {
     var xhr = new XMLHttpRequest();
-    xhr.open('HEAD', urlToFile, false);
+    xhr.open("HEAD", urlToFile, false);
     xhr.send();
 
     if (xhr.status == "404") {

@@ -13,7 +13,8 @@ import {
 } from './queue.js'
 
 import {
-    sleepyVibes
+    sleepyVibes,
+    litVibes
 } from './mixes.js'
 
 let Song = new Audio();
@@ -35,7 +36,21 @@ let player = document.querySelector('.player');
 let prevBtn = document.querySelector('.prev');
 let playBtn = document.querySelector('#play-btn');
 let nextBtn = document.querySelector('.next');
-let sleepyVibesBtn = document.querySelector('#sleepy-vibes');
+let popOne = document.querySelector('#pop-one');
+let popTwo = document.querySelector('#pop-two');
+let popThree = document.querySelector('#pop-three');
+let slider = document.querySelector('#slider');
+slider.value = songData.song.currentTime
+slider.min = 0
+slider.max = songData.song.duration
+
+slider.oninput = function () {
+    songData.song.currentTime = this.value
+}
+
+updateValue()
+
+// let sleepyVibesBtn = document.querySelector('#sleepy-vibes');
 
 prevBtn.addEventListener("click", (function () {
     prev(songData)
@@ -46,13 +61,27 @@ playBtn.addEventListener("click", (function () {
 nextBtn.addEventListener("click", (function () {
     next(songData)
 }));
-sleepyVibesBtn.addEventListener("click", playSleepyVibes);
+// sleepyVibesBtn.addEventListener("click", playSleepyVibes);
+popOne.addEventListener("click", (function () {
+    playMix(sleepyVibes)
+}))
+popTwo.addEventListener("click", (function () {
+    playMix(litVibes)
+}))
+popThree.addEventListener("click", playSleepyVibes)
 
 playBtn.className = "play";
 
-function playSleepyVibes() {
-    console.log('here')
-    queue.order += sleepyVibes.order
-    queue.length += sleepyVibes.length
+function playMix(mixName) {
+    queue.order = mixName.order
+    queue.length = mixName.length
     play(songData, playBtn)
+    console.log(queue)
+}
+
+function updateValue() {
+    slider.value = songData.song.currentTime
+    slider.max = songData.song.duration
+
+    setTimeout(updateValue, 1000)
 }
