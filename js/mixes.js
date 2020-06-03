@@ -36,9 +36,9 @@ export function setUpRecently(audio) {
 }
 
 export function setUpPop() {
-    createElem('pop-one', 'sleepy vibes', 'nil', 'pop-one-heading')
-    createElem('pop-two', 'lit vibes', 'nil', 'pop-two-heading')
-    createElem('pop-three', 'rock vibes', 'nil', 'pop-three-heading')
+    createPlaylistCover('pop-one', 'sleepy vibes', 'pop-one-heading', sleepyVibes.order)
+    createPlaylistCover('pop-two', 'lit vibes', 'pop-two-heading', litVibes.order)
+    createPlaylistCover('pop-three', 'rock vibes', 'pop-three-heading', rockVibes.order)
 }
 
 export function createElem(div, title, songs, headingId) {
@@ -52,4 +52,21 @@ export function createElem(div, title, songs, headingId) {
     }
     heading.innerHTML = title;
     divElem.appendChild(heading)
+}
+
+function createPlaylistCover(div, title, headingId, songs) {
+    let divElem = document.getElementById(div)
+    let heading = document.createElement('h3')
+    heading.id = headingId
+    heading.innerHTML = title;
+    divElem.appendChild(heading)
+    console.log(songs)
+
+    for (let song in songs) {
+        console.log(song)
+        let songElem = document.createElement('p')
+        songElem.id = 'song'
+        songElem.innerHTML = sd[song].name
+        divElem.appendChild(songElem)
+    }
 }
