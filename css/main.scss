@@ -1,148 +1,197 @@
 html {
-    background-color: #E5DADA;
-    overflow: hidden;
-    padding: 0;
+  background-color: #e5dada;
+  overflow: hidden;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 nav {
-    color: #242423;
+  color: #242423;
+  display: flex;
+  width: 90vw;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 3vw;
+  height: 10vh;
+
+  div {
     display: flex;
-    width: 90vw;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 0 3vw;
-    height: 10vh;
+    justify-content: space-around;
+    width: 40%;
+  }
 
-    div {
-        display: flex;
-        justify-content: space-around;
-        width: 40%;
-    }
-
-    a {
-        text-decoration: none;
-        color: #242423;
-    }
+  a {
+    text-decoration: none;
+    color: #242423;
+  }
 }
-
 
 //REVISIT WITH NODE!!
 
 main {
-    height: 75vh;
-    margin-left: 3%;
+  height: 75vh;
+  margin-left: 3%;
 
-    .popular-section {
-        height: 50vh;
+  .popular-section {
+    height: 50vh;
 
-        div {
-            display: grid;
-            grid-template-rows: 40vh;
-            grid-template-columns: repeat(3, 27.5%);
-            grid-gap: 5vw;
+    div {
+      display: grid;
+      grid-template-rows: 40vh;
+      grid-template-columns: repeat(3, 27.5%);
+      grid-gap: 5vw;
 
-            div {
-                height: 100%;
-                width: 100%;
-                border-radius: 19px;
-                box-shadow: 0px 0px 18px gray;
-                padding: 5%;
-            }
+      div {
+        height: 100%;
+        width: 100%;
+        border-radius: 19px;
+        box-shadow: 0px 0px 18px gray;
+        padding: 5%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(7, 25px);
+        grid-gap: 0;
+
+        h3 {
         }
-    }
 
-    .recently-section {
-        div {
-            display: grid;
-            grid-template-rows: 15vh;
-            grid-template-columns: repeat(3, 27.5%);
-            grid-gap: 5vw;
-
-            div {
-                background-color: #f3f3f3;
-                height: 100%;
-                width: 100%;
-            }
+        p {
+          padding: 0;
+          margin: 0;
+          width: 100%;
+          height: 100%;
+          text-align: right;
         }
+      }
     }
+  }
+
+  .recently-section {
+    div {
+      display: grid;
+      grid-template-rows: 15vh;
+      grid-template-columns: repeat(3, 27.5%);
+      grid-gap: 5vw;
+
+      div {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
 }
 
 footer {
-    height: 15vh;
+  height: 15vh;
+  width: 100%;
+  background-color: #002642;
+  margin-left: -10%;
+  padding-left: 11%;
+  display: grid;
+  grid-template-columns: 1fr 5fr 3fr 4fr;
+
+  #album-cover {
+    background-color: #e5dada;
+    margin: 10px 20px;
+    margin-bottom: 40px;
+    border: 3px white solid;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .time-slider {
+    margin-top: 5vh;
+    padding-right: 10%;
+
+    input[type="range"]::-moz-range-thumb {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      background: #3e5641;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .slider {
+      width: 100%;
+      height: 20px;
+      background-color: #e5dada;
+      -webkit-appearance: none;
+      border-radius: 40px;
+      outline: none;
+    }
+  }
+
+  .song-data {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30vw;
+    color: #e5dada;
+    margin-top: -2%;
+  }
+
+  .player {
     width: 100%;
-    background-color: #002642;
-    margin-left: -10%;
-    padding-left: 11%;
+    height: 95%;
     display: grid;
-    grid-template-columns: 1fr 8fr 4fr;
+    grid-template-columns: repeat(4, max-content);
+    justify-content: space-evenly;
+    align-items: baseline;
+    padding-top: 7.5%;
 
-    #album-cover {
-        background-color: #E5DADA;
-        margin: 10px 20px;
-        margin-bottom: 40px;
-        border: 3px white solid;
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
+    div {
+      cursor: pointer;
     }
 
-    .song-data {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 30vw;
-        color: #E5DADA;
-        margin-top: -2%;
+    .prev {
+      width: 80px;
+      height: 50px;
+      background-image: url(../icons/prev.png);
+      margin-right: 30%;
     }
 
-    .player {
-        width: 100%;
-        height: 95%;
-        display: grid;
-        grid-template-columns: repeat(4, max-content);
-        justify-content: space-evenly;
-        align-items: baseline;
-        padding-top: 7.5%;
-
-        div {
-            cursor: pointer;
-        }
-
-        .prev {
-            width: 80px;
-            height: 50px;
-            background-image: url(../icons/prev.png);
-            margin-right: 30%;
-        }
-
-        .next {
-            width: 80px;
-            height: 50px;
-            background-image: url(../icons/next.png);
-        }
-
-        .play {
-            width: 45px;
-            height: 50px;
-            background-image: url(../icons/play.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .pause {
-            margin-top: -10px;
-            width: 45px;
-            height: 65px;
-            background-image: url(../icons/pause.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
+    .next {
+      width: 80px;
+      height: 50px;
+      background-image: url(../icons/next.png);
     }
+
+    .play {
+      width: 45px;
+      height: 50px;
+      background-image: url(../icons/play.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .pause {
+      margin-top: -10px;
+      width: 45px;
+      height: 65px;
+      background-image: url(../icons/pause.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
 }

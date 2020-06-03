@@ -1,7 +1,20 @@
 html {
-  background-color: #E5DADA;
+  background-color: #e5dada;
   overflow: hidden;
   padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -65,6 +78,21 @@ main .popular-section div div {
   -webkit-box-shadow: 0px 0px 18px gray;
           box-shadow: 0px 0px 18px gray;
   padding: 5%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: (25px)[7];
+      grid-template-rows: repeat(7, 25px);
+  grid-gap: 0;
+}
+
+main .popular-section div div p {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  text-align: right;
 }
 
 main .recently-section div {
@@ -78,7 +106,6 @@ main .recently-section div {
 }
 
 main .recently-section div div {
-  background-color: #f3f3f3;
   height: 100%;
   width: 100%;
 }
@@ -91,12 +118,12 @@ footer {
   padding-left: 11%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 8fr 4fr;
-      grid-template-columns: 1fr 8fr 4fr;
+  -ms-grid-columns: 1fr 5fr 3fr 4fr;
+      grid-template-columns: 1fr 5fr 3fr 4fr;
 }
 
 footer #album-cover {
-  background-color: #E5DADA;
+  background-color: #e5dada;
   margin: 10px 20px;
   margin-bottom: 40px;
   border: 3px white solid;
@@ -105,6 +132,29 @@ footer #album-cover {
 footer #album-cover img {
   width: 100%;
   height: 100%;
+}
+
+footer .time-slider {
+  margin-top: 5vh;
+  padding-right: 10%;
+}
+
+footer .time-slider input[type="range"]::-moz-range-thumb {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: #3e5641;
+  cursor: pointer;
+  outline: none;
+}
+
+footer .time-slider .slider {
+  width: 100%;
+  height: 20px;
+  background-color: #e5dada;
+  -webkit-appearance: none;
+  border-radius: 40px;
+  outline: none;
 }
 
 footer .song-data {
@@ -117,7 +167,7 @@ footer .song-data {
       -ms-flex-align: center;
           align-items: center;
   width: 30vw;
-  color: #E5DADA;
+  color: #e5dada;
   margin-top: -2%;
 }
 
