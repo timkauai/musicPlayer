@@ -7,8 +7,7 @@ export let SongData = {
         },
         name: 'Prom / King',
         artist: 'Saba',
-        album: 'Care For Me',
-        played: 0
+        album: 'Care For Me'
     },
     1: {
         media: {

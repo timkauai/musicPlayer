@@ -5,7 +5,8 @@ import {
 } from './musicPlayer.js';
 
 import {
-    setUpSongData as sd
+    setUpSongData as sd,
+    SongData as data
 } from './songData.js';
 
 import {
@@ -14,13 +15,16 @@ import {
 
 import {
     sleepyVibes,
-    litVibes
+    litVibes,
+    rockVibes,
+    setUpRecently as rec,
+    setUpPop as pop
 } from './mixes.js'
 
 let Song = new Audio();
 
 //set up the song number in the queue
-let songData = {
+let audio = {
     song: Song,
     songNum: 0,
 };
@@ -28,10 +32,10 @@ let songData = {
 if (queue.length != 0) {
     sd(queue.order[queue.current]);
 } else {
-    sd(songData.songNum);
+    sd(audio.songNum);
 }
 
-//the stuff
+//get nessesary document things
 let player = document.querySelector('.player');
 let prevBtn = document.querySelector('.prev');
 let playBtn = document.querySelector('#play-btn');
@@ -40,48 +44,63 @@ let popOne = document.querySelector('#pop-one');
 let popTwo = document.querySelector('#pop-two');
 let popThree = document.querySelector('#pop-three');
 let slider = document.querySelector('#slider');
-slider.value = songData.song.currentTime
-slider.min = 0
-slider.max = songData.song.duration
 
+//initialization of a couple classes
+playBtn.className = "play";
+
+//slider setup
 slider.oninput = function () {
-    songData.song.currentTime = this.value
+    audio.song.currentTime = this.value
 }
-
 updateValue()
 
-// let sleepyVibesBtn = document.querySelector('#sleepy-vibes');
 
+//set up the click and keydown events
 prevBtn.addEventListener("click", (function () {
-    prev(songData)
+    prev(audio)
 }));
 playBtn.addEventListener("click", (function () {
-    play(songData, playBtn)
+    play(audio, playBtn)
 }));
 nextBtn.addEventListener("click", (function () {
-    next(songData)
+    next(audio)
 }));
-// sleepyVibesBtn.addEventListener("click", playSleepyVibes);
 popOne.addEventListener("click", (function () {
     playMix(sleepyVibes)
 }))
 popTwo.addEventListener("click", (function () {
     playMix(litVibes)
 }))
-popThree.addEventListener("click", playSleepyVibes)
+popThree.addEventListener("click", (function () {
+    playMix(rockVibes)
+}))
+document.body.onkeyup = function (e) {
+    if (e.keyCode == 32 || e.keyCode == 75) {
+        play(audio, playBtn)
+    }
+    if (e.keyCode == 76) {
+        next(audio)
+    }
 
-playBtn.className = "play";
+    if (e.keyCode == 74) {
+        prev(audio)
+    }
+}
+
+//set up some stuff from modules
+pop()
 
 function playMix(mixName) {
     queue.order = mixName.order
     queue.length = mixName.length
-    play(songData, playBtn)
-    console.log(queue)
+    play(audio, playBtn)
+    data.recent.unshift(mixName)
+    rec(audio)
 }
 
 function updateValue() {
-    slider.value = songData.song.currentTime
-    slider.max = songData.song.duration
+    slider.value = audio.song.currentTime
+    slider.max = audio.song.duration
 
     setTimeout(updateValue, 1000)
 }
